@@ -38,10 +38,6 @@
 
     for (let i = 1; i <= nPoints; i++) {
       let y = Y_MAX - (i * Y_MAX) / nPoints;
-      ctx.beginPath();
-      ctx.moveTo(10, y);
-      ctx.lineTo(5, y);
-      ctx.stroke();
       ctx.fillText(i, -20, y + 5);
     }
 

@@ -37,15 +37,6 @@
     ctx.stroke();
 
     for (let i = 1; i <= nPoints; i++) {
-      let x = 10 + (i * X_MAX) / nPoints;
-      ctx.beginPath();
-      ctx.moveTo(x, Y_MAX);
-      ctx.lineTo(x, Y_MAX + 5);
-      ctx.stroke();
-      ctx.fillText(i, x - 5, Y_MAX + 20);
-    }
-
-    for (let i = 1; i <= nPoints; i++) {
       let y = Y_MAX - (i * Y_MAX) / nPoints;
       ctx.beginPath();
       ctx.moveTo(10, y);
@@ -67,10 +58,9 @@
   let nPoints = parseInt(prompt("Enter the number of points:"));
   if (nPoints > 100) {
     alert("The number of points cannot exceed 100. Setting to 100.");
-    nPoints = 10;
+    nPoints = 100;
   }
   drawAxesAndConnections(nPoints);
-
 </script>
 </body>
 </html>

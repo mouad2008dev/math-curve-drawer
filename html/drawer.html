@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axes and Connections</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-            display: block;
-            margin: 20px auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axes and Connections</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="canvas" width="320" height="320"></canvas>
-    <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+<canvas id="canvas" width="320" height="320"></canvas>
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
 
-        const X_MAX = 300;
-        const Y_MAX = 300;
+  const X_MAX = 300;
+  const Y_MAX = 300;
 
-        function drawAxesAndConnections(nPoints) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 2;
+  function drawAxesAndConnections(nPoints) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
 
-            ctx.beginPath();
-            ctx.moveTo(10, Y_MAX);
-            ctx.lineTo(X_MAX + 10, Y_MAX);
-            ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(10, Y_MAX);
+    ctx.lineTo(X_MAX + 10, Y_MAX);
+    ctx.stroke();
 
-            ctx.beginPath();
-            ctx.moveTo(10, Y_MAX);
-            ctx.lineTo(10, Y_MAX - Y_MAX);
-            ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(10, Y_MAX);
+    ctx.lineTo(10, Y_MAX - Y_MAX);
+    ctx.stroke();
 
-            for (let i = 1; i <= nPoints; i++) {
-                let x = 10 + (i * X_MAX) / nPoints;
-                ctx.beginPath();
-                ctx.moveTo(x, Y_MAX);
-                ctx.lineTo(x, Y_MAX + 5);
-                ctx.stroke();
-                ctx.fillText(i, x - 5, Y_MAX + 20);
-            }
+    for (let i = 1; i <= nPoints; i++) {
+      let x = 10 + (i * X_MAX) / nPoints;
+      ctx.beginPath();
+      ctx.moveTo(x, Y_MAX);
+      ctx.lineTo(x, Y_MAX + 5);
+      ctx.stroke();
+      ctx.fillText(i, x - 5, Y_MAX + 20);
+    }
 
-            for (let i = 1; i <= nPoints; i++) {
-                let y = Y_MAX - (i * Y_MAX) / nPoints;
-                ctx.beginPath();
-                ctx.moveTo(10, y);
-                ctx.lineTo(5, y);
-                ctx.stroke();
-                ctx.fillText(i, -20, y + 5);
-            }
+    for (let i = 1; i <= nPoints; i++) {
+      let y = Y_MAX - (i * Y_MAX) / nPoints;
+      ctx.beginPath();
+      ctx.moveTo(10, y);
+      ctx.lineTo(5, y);
+      ctx.stroke();
+      ctx.fillText(i, -20, y + 5);
+    }
 
-            for (let i = 1; i <= nPoints; i++) {
-                let x = 10 + (i * X_MAX) / nPoints;
-                let y = Y_MAX - ((nPoints - i + 1) * Y_MAX) / nPoints;
-                ctx.beginPath();
-                ctx.moveTo(x, Y_MAX);
-                ctx.lineTo(10, y);
-                ctx.stroke();
-            }
-        }
+    for (let i = 1; i <= nPoints; i++) {
+      let x = 10 + (i * X_MAX) / nPoints;
+      let y = Y_MAX - ((nPoints - i + 1) * Y_MAX) / nPoints;
+      ctx.beginPath();
+      ctx.moveTo(x, Y_MAX);
+      ctx.lineTo(10, y);
+      ctx.stroke();
+    }
+  }
 
-        const nPoints = parseInt(prompt("Enter the number of points:"));
-        drawAxesAndConnections(nPoints);
-    </script>
+  let nPoints = parseInt(prompt("Enter the number of points:"));
+  if (nPoints > 100) {
+    alert("The number of points cannot exceed 100. Setting to 100.");
+    nPoints = 10;
+  }
+  drawAxesAndConnections(nPoints);
+
+</script>
 </body>
 </html>
